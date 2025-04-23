@@ -1,40 +1,33 @@
-========================================================================
-    CONSOLE APPLICATION : TriangleTree Project Overview
-========================================================================
 
-AppWizard has created this TriangleTree application for you.
+Triangle
+By starting at the top of the triangle and moving to adjacent numbers on the row below, the maximum total from top to 
+bottom is 27.
 
-This file contains a summary of what you will find in each of the files that
-make up your TriangleTree application.
+        5
+      9   6
+    4   6   8
+  0   7   1   5
+
+I.e. 5 + 9 + 6 + 7 = 27.
+
+Write a program in a language of your choice to find the maximum total from top to bottom in triangle.txt, a text file 
+containing a triangle with 100 rows. 
+Send your solution and resume to [123456 AT yodle dot com], replacing 123456 with the maximum sum for the triangle. 
 
 
-TriangleTree.vcxproj
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
+/* UPDATE 02/26/204
+   After looking at this problem more carefully, I realized I need to traverse all possible paths in order to get the
+   maximum total. I made some assumptions about the initial problem that didn't tell the whole story.
+   If in the tree example above we change 8 -> 81, the current algorithm will not visit that node and not give us the 
+   max value we are looking for:
 
-TriangleTree.vcxproj.filters
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
+        5
+      9   6
+    4   6   81
+  0   7   1   5
 
-TriangleTree.cpp
-    This is the main application source file.
+I.e. 5 + 9 + 81 + 5 = 100
 
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
+*/
 
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named TriangleTree.pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
+// TriangleTree.cpp : Defines the entry point for the console application.
